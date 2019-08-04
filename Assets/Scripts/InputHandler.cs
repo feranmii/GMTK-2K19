@@ -54,7 +54,7 @@ public class InputHandler : MonoBehaviour
             //movementInputData.IsRunning = false;
             movementInputData.IsRunning = true;
 
-        movementInputData.JumpClicked = Input.GetMouseButtonDown(1); //Input.GetKeyDown(KeyCode.Space);
+        movementInputData.JumpClicked = Input.GetKeyDown(KeyCode.Space);
         movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
     }
     #endregion

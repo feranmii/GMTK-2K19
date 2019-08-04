@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DOT;
+using EventCallbacks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,10 +27,10 @@ public class Debris : MonoBehaviour, IDamage
         StartCoroutine(TimeDestruction());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(canSpin)
-            transform.Rotate(transform.forward + randRot * rotateSpeed);
+            transform.Rotate(Time.deltaTime * transform.forward + randRot * rotateSpeed);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -54,6 +55,10 @@ public class Debris : MonoBehaviour, IDamage
     public void Die()
     {
         gameObject.SetActive(false);
+        TimeScaleEvent timeScaleEvent = new TimeScaleEvent(0f,.01f,false, 0 , false);
+        timeScaleEvent.FireEvent();
+        
+        GameManager.Instance.DoScreenShake(.3f,1.2f);
     }
 
 

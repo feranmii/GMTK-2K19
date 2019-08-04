@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - OutsideBoundary
+  - Environment
+  - Ground
+  - Debris
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - Ground
   - PostProcessing
   - Debris
-  - 
-  - 
-  - 
+  - Environment
+  - Weapon
+  - Player
   - 
   - 
   - 
