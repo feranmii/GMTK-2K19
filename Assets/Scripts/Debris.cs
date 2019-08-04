@@ -12,7 +12,9 @@ public class Debris : MonoBehaviour, IDamage
     public float debrisLifetime = 5;
     private Vector3 randRot;
     private bool canSpin = true;
+    //Debris
     
+    public GameObject brokenDebris;
     
     public void Damage(int amount, bool instantHit = false)
     {
@@ -52,11 +54,24 @@ public class Debris : MonoBehaviour, IDamage
         //Die();
     }
 
+    public void Break()
+    {
+        GameObject broken = Instantiate(brokenDebris, transform.position, transform.rotation);
+        broken.transform.localScale = transform.localScale;
+        Rigidbody[] rbs = broken.GetComponentsInChildren<Rigidbody>();
+        foreach(Rigidbody rb in rbs)
+        {
+            rb.AddExplosionForce(1200f, transform.position, 400f);
+        }
+        
+        Die();
+    }
+    
     public void Die()
     {
         gameObject.SetActive(false);
-        TimeScaleEvent timeScaleEvent = new TimeScaleEvent(0f,.01f,false, 0 , false);
-        timeScaleEvent.FireEvent();
+//        TimeScaleEvent timeScaleEvent = new TimeScaleEvent(0f,.01f,false, 0 , false);
+//        timeScaleEvent.FireEvent();
         
         GameManager.Instance.DoScreenShake(.3f,1.2f);
     }

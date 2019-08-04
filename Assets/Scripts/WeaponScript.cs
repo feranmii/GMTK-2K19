@@ -45,7 +45,7 @@ public class WeaponScript : MonoBehaviour
             if (other.collider.GetComponent<Debris>() != null)
             {
                 //break;
-                other.collider.GetComponent<Debris>().Die();
+                other.collider.GetComponent<Debris>().Break();
                 print("Death by balling");
             }
 

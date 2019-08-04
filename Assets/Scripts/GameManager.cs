@@ -18,6 +18,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     public void DoScreenShake(float duration, float strength)
     {
-        cam.DOShakePosition(duration, strength);
+        cam.DOShakePosition(duration, strength).SetAutoKill(false);
     }
 }

@@ -123,3 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 6
   debrisLifetime: 10
+  brokenDebris: {fileID: 1067342672648614712, guid: 82586c170fa95496688e9ce25dcb7fc9,
+    type: 3}
