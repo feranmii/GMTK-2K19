@@ -5,9 +5,11 @@
     <explicitIncludes>
       <Path>Library/PackageCache/com.unity.ads@2.0.8</Path>
       <Path>Library/PackageCache/com.unity.analytics@3.3.2</Path>
+      <Path>Library/PackageCache/com.unity.cinemachine@2.3.4</Path>
       <Path>Library/PackageCache/com.unity.collab-proxy@1.2.16</Path>
       <Path>Library/PackageCache/com.unity.postprocessing@2.1.4</Path>
       <Path>Library/PackageCache/com.unity.purchasing@2.0.6</Path>
+      <Path>Library/PackageCache/com.unity.recorder@2.0.2-preview.3</Path>
       <Path>Library/PackageCache/com.unity.render-pipelines.core@5.7.2</Path>
       <Path>Library/PackageCache/com.unity.render-pipelines.lightweight@5.7.2</Path>
       <Path>Library/PackageCache/com.unity.shadergraph@5.7.2</Path>
@@ -18,8 +20,11 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>Build_Webgl</Path>
+      <Path>Build_Windows</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>Recordings</Path>
       <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>

@@ -40,10 +40,12 @@ public class FallingDebrisController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
-        {
-            //SpawnDebris();
-        }
+        spawnInterval.x -= Time.deltaTime / 500f;
+        spawnInterval.y -= Time.deltaTime / 500f;
+
+
+        spawnInterval.x = Mathf.Clamp(spawnInterval.x, 0.2f, spawnInterval.x);
+        spawnInterval.y = Mathf.Clamp(spawnInterval.y, 0.2f, spawnInterval.y);
     }
 
     public IEnumerator SpawnDebris()
@@ -72,7 +74,7 @@ public class FallingDebrisController : MonoBehaviour
         
         var retVal = Vector3.zero;
 
-        var playerPos = _player.transform.position + new Vector3(0, 0, playerTransformOffset);
+        var playerPos = _player.transform.position + _player.transform.forward * playerTransformOffset;
         
         var randPos = Random.insideUnitSphere;
         randPos.y = 0;

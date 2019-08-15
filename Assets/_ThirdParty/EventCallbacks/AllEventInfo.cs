@@ -9,11 +9,22 @@ namespace EventCallbacks
 
     #region In Game Events
 
+    public class OnDebrisDestroyed : Event<OnDebrisDestroyed>
+    {
+        
+    }
     public class OnPlayerDamage : Event<OnPlayerDamage>
     {
         
     }
 
+
+    public class OnGameOver : Event<OnGameOver>
+    {
+        
+    }
+    
+    
     public class OnPlayerHealthChanged : Event<OnPlayerHealthChanged>
     {
         public float newHealth;

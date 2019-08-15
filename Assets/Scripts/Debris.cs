@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DOT;
 using EventCallbacks;
 using UnityEngine;
+using Utils.Extensions;
 using Random = UnityEngine.Random;
 
 public class Debris : MonoBehaviour, IDamage
@@ -15,7 +16,8 @@ public class Debris : MonoBehaviour, IDamage
     //Debris
     
     public GameObject brokenDebris;
-    
+    public AudioClip[] clips;
+    public AudioSource audioSource;
     public void Damage(int amount, bool instantHit = false)
     {
         
@@ -42,13 +44,14 @@ public class Debris : MonoBehaviour, IDamage
         if ( damageable != null )
         {
             damageable.Die();
-            
         }
-
+        
+        
         if (other.collider.CompareTag("OutsideBoundary"))
         {
             gameObject.SetActive(false);
         }
+        
         
         canSpin = false;
         //Die();
@@ -56,6 +59,8 @@ public class Debris : MonoBehaviour, IDamage
 
     public void Break()
     {
+        //PlaySound();
+        
         GameObject broken = Instantiate(brokenDebris, transform.position, transform.rotation);
         broken.transform.localScale = transform.localScale;
         Rigidbody[] rbs = broken.GetComponentsInChildren<Rigidbody>();
@@ -69,13 +74,30 @@ public class Debris : MonoBehaviour, IDamage
     
     public void Die()
     {
-        gameObject.SetActive(false);
-//        TimeScaleEvent timeScaleEvent = new TimeScaleEvent(0f,.01f,false, 0 , false);
-//        timeScaleEvent.FireEvent();
+        GameManager.Instance.DoScreenShake();
+
+        PlaySound();
         
-        GameManager.Instance.DoScreenShake(.3f,1.2f);
+        OnDebrisDestroyed onDebrisDestroyed = new OnDebrisDestroyed();
+        onDebrisDestroyed.FireEvent();
+        
+ 
+        
+        gameObject.SetActive(false);
+
     }
 
+  
+
+    public void PlaySound()
+    {
+        var randClip = clips[0];//clips.RandomItem();
+
+        audioSource.clip = randClip;
+
+        audioSource.Play();
+
+    }
 
     public IEnumerator TimeDestruction()
     {

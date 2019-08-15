@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamage
 {
+    public bool invulnerable;
     public FirstPersonController FirstPersonController;
 
     private void Start()
@@ -23,6 +24,11 @@ public class Player : MonoBehaviour, IDamage
 
     public void Die()
     {
+        if (!invulnerable)
+            FirstPersonController.enabled = false;
+        
+        OnGameOver onGameOver = new OnGameOver();
+        onGameOver.FireEvent();
     }
 
 
@@ -33,6 +39,14 @@ public class Player : MonoBehaviour, IDamage
             //Camera.main.DOShakePosition(.2f, 1f, 4, 2);
 
             FirstPersonController.enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.CompareTag("OutsideBoundary"))
+        {
+            Die();
         }
     }
 }

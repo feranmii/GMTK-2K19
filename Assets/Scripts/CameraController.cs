@@ -71,7 +71,7 @@ using UnityEngine;
 
                 
                 m_desiredPitch = Mathf.Clamp(m_desiredPitch,lookAngleMinMax.x,lookAngleMinMax.y);
-                m_desiredYaw = Mathf.Clamp(m_desiredYaw,yawAngleMinMax.x,yawAngleMinMax.y);
+                //m_desiredYaw = Mathf.Clamp(m_desiredYaw,yawAngleMinMax.x,yawAngleMinMax.y);
             }
 
             void SmoothRotation()

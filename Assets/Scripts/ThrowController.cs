@@ -119,7 +119,7 @@ public class ThrowController : MonoBehaviour
         weapon.localPosition = originalLocRot;
         hasWeapon = true;
 
-        GameManager.Instance.DoScreenShake(.4f, .6f);
+        GameManager.Instance.DoScreenShake();
         //Particle and trail
         //catchParticle.Play();
         //trailRenderer.emitting = false;

@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - Ground
   - Debris
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Environment
   - Weapon
   - Player
-  - 
+  - BrokenDebris
   - 
   - 
   - 
